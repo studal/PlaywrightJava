@@ -9,7 +9,6 @@ import java.util.List;
 
 public class test {
 
-
     @Test
     public void testMethod(){
 
@@ -17,13 +16,14 @@ public class test {
 //        Browser browser = playwright.chromium().launch(
 //                new BrowserType.LaunchOptions().setChannel("chrome"));
 //        To run specifically chrome
-//        Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setChannel("chrome"));
+//        Browser browser = playwright.chromium().launch(
+//                new BrowserType.LaunchOptions().setHeadless(false).setChannel("chrome"));
 //          Or
         BrowserType.LaunchOptions lp = new BrowserType.LaunchOptions();
         lp.setHeadless(false);
         lp.setChannel("chrome");
         List<String> ls = new ArrayList<String>();
-        ls.add("--start-maximized");  // only works with chromoum based, rest browser have to use .setViewportSize
+        ls.add("--start-maximized");  // only works with chromium based, rest browser have to use .setViewportSize
         ls.add("");
         lp.setArgs(ls);
         Browser browser = playwright.chromium().launch(lp);
