@@ -26,8 +26,4 @@ public class LoginPage{
         page.locator(loginButtonLocator).click();
     }
 
-
-
-
-
 }

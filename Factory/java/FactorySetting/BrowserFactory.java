@@ -1,6 +1,6 @@
 package FactorySetting;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.io.FileUtils;
 import com.microsoft.playwright.*;
 
 import java.io.File;
@@ -92,9 +92,13 @@ public class BrowserFactory {
         page.close();
     }
 
-    public void deleteDirectory(){
-        String directoryPath = System.getProperty("user.dir") + "/recording/";
+    public void deleteDirectory() {
+        String directoryPath = System.getProperty("user.dir") + "/recording";
         File directory = new File(directoryPath);
-        directory.delete();
+        try {
+            FileUtils.cleanDirectory(directory);
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
 }
