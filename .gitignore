@@ -16,6 +16,9 @@ test-output/
 # Idea #
 .idea/
 
+# Recordings from Playwright #
+recording/
+
 ######## Gradle ########
 .gradle
 /build/

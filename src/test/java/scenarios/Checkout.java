@@ -1,3 +1,5 @@
+package scenarios;
+
 import Base.BaseClass;
 import Manager.PageManager;
 import Pages.LoginPage;
@@ -23,7 +25,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getProductsPage().getItemsAddedToCart(), "2",
                 "Some products may not have been added");
 
-        // Proceed to Checkout Item
+        // Proceed to scenarios.Checkout Item
         pageManager.getProductsPage().goToCart();
         pageManager.getYourCartPage().clickCheckoutButton();
 
@@ -31,7 +33,7 @@ public class Checkout extends BaseClass {
         pageManager.getCheckoutInformationPage().provideDeliveryDetails("Sandy", "N", "zipcode");
         pageManager.getCheckoutInformationPage().clickContinueButton();
 
-        // Checkout Items
+        // scenarios.Checkout Items
         pageManager.getCheckoutOverviewPage().clickFinishButton();
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                "Thank you for your order!", "Order Not Placed" );
