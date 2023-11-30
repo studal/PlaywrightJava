@@ -8,9 +8,6 @@ public class PageManager {
 
     Page page ;
 
-    public PageManager(){
-    }
-
     public PageManager(Page page){
         this.page = page;
     }
