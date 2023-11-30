@@ -69,7 +69,7 @@ local.properties
 .buildpath
 
 # sbteclipse plugin
-.target
+.target/
 
 # Tern plugin
 .tern-project
@@ -147,3 +147,4 @@ fabric.properties
 src/.DS_Store
 target/.DS_Store
 examples.iml
+*.lst
