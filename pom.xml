@@ -22,7 +22,6 @@
         <groupId>org.testng</groupId>
         <artifactId>testng</artifactId>
         <version>7.8.0</version>
-        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>log4j</groupId>
@@ -39,11 +38,6 @@
         <groupId>com.aventstack</groupId>
         <artifactId>extentreports</artifactId>
         <version>${extentreports-version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>7.7.0</version>
     </dependency>
 </dependencies>
 <build>

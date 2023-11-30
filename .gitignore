@@ -9,6 +9,7 @@ test-output/
 
 # Recordings from Playwright #
 recording/
+screenshot/
 
 ####### Java #######
 # Compiled class file
@@ -69,7 +70,7 @@ local.properties
 .buildpath
 
 # sbteclipse plugin
-.target/
+.target
 
 # Tern plugin
 .tern-project
@@ -148,3 +149,5 @@ src/.DS_Store
 target/.DS_Store
 examples.iml
 *.lst
+target/
+.DS_Store

@@ -6,4 +6,7 @@
             <class name="scenarios.Checkout"></class>
         </classes>
     </test> <!-- Test -->
+    <listeners>
+        <listener class-name="listeners.ExtentReportListener"></listener>
+    </listeners>
 </suite> <!-- Suite -->

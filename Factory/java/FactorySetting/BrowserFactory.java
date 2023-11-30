@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
 
@@ -92,21 +93,35 @@ public class BrowserFactory {
         return null;
     }
 
-    public void emptyRecordingDirectory() {
-        String directoryPath = System.getProperty("user.dir") + "/recording";
-        File directory = new File(directoryPath);
+    public static String takeScreenshot() {
+        String path = System.getProperty("user.dir") + "/screenshot/" + System.currentTimeMillis() + ".png";
+        //getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)).setFullPage(true));
+        byte[] buffer = getPage().screenshot(new Page.ScreenshotOptions().setPath(Paths.get(path)).setFullPage(true));
+        String base64Path = Base64.getEncoder().encodeToString(buffer);
+        return base64Path;
+    }
+
+    public void emptyRecordingAndScreenshotDirectory() {
+        String recDirectoryPath = System.getProperty("user.dir") + "/recording";
+        String ssDirectoryPath = System.getProperty("user.dir") + "/screenshot";
+        File recDirectory = new File(recDirectoryPath);
+        File ssDirectory = new File(ssDirectoryPath);
         try {
-            FileUtils.cleanDirectory(directory);
+            FileUtils.cleanDirectory(recDirectory);
+            FileUtils.cleanDirectory(ssDirectory);
         } catch (IOException ex){
             ex.printStackTrace();
         }
     }
 
-    public void createRecordingDirectory() {
-        String directoryPath = System.getProperty("user.dir") + "/recording";
-        File directory = new File(directoryPath);
+    public void createRecordingAndScreenshotDirectory() {
+        String recDirectoryPath = System.getProperty("user.dir") + "/recording";
+        String ssDirectoryPath = System.getProperty("user.dir") + "/screenshot";
+        File recDirectory = new File(recDirectoryPath);
+        File ssDirectory = new File(ssDirectoryPath);
         try {
-            FileUtils.createParentDirectories(directory);
+            FileUtils.createParentDirectories(recDirectory);
+            FileUtils.createParentDirectories(ssDirectory);
         } catch (IOException ex){
             ex.printStackTrace();
         }
