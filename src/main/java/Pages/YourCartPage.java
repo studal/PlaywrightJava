@@ -4,7 +4,7 @@ import com.microsoft.playwright.Page;
 
 public class YourCartPage {
 
-    static Page page;
+    Page page;
     public YourCartPage(Page page){
         this.page = page;
     }

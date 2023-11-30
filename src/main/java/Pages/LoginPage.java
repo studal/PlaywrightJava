@@ -8,7 +8,7 @@ public class LoginPage{
     private static String passwordFieldLocator = "//input[@id='password']";
     private static String loginButtonLocator = "//input[@id='login-button']";
 
-    static Page page;
+    Page page;
 
     public LoginPage(Page page){
             this.page = page;
@@ -16,6 +16,7 @@ public class LoginPage{
 
     public void enterUserName(String userName){
         page.locator(usernameFieldLocator).fill(userName);
+        System.out.println(page.toString());
     }
 
     public void enterPassword(String password){

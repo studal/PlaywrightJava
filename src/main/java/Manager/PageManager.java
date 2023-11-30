@@ -1,11 +1,12 @@
 package Manager;
 
+import FactorySetting.BrowserFactory;
 import Pages.*;
 import com.microsoft.playwright.Page;
 
 public class PageManager {
 
-    static Page page;
+    Page page ;
 
     public PageManager(){
     }

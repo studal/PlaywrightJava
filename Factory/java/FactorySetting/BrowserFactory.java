@@ -14,36 +14,45 @@ import java.util.Properties;
 
 public class BrowserFactory {
 
-    static Playwright playwright;
-    static BrowserContext browserContext;
-    static Page page;
-    static Browser browser;
+    private static ThreadLocal<Playwright> tlPlaywright = new ThreadLocal<>();
+    private static ThreadLocal<Browser> tlBrowser = new ThreadLocal<>();
+    private static ThreadLocal<BrowserContext> tlBrowserContext = new ThreadLocal<>();
+    private static ThreadLocal<Page> tlPage = new ThreadLocal<>();
 
+    public static Playwright getPlaywright() {
+        return tlPlaywright.get();
+    }
+    public static Browser getBrowser() {
+        return tlBrowser.get();
+    }
+    public static BrowserContext getBrowserContext() {
+        return tlBrowserContext.get();
+    }
+    public static Page getPage() {
+        return tlPage.get();
+    }
 
     public Page launchBrowser() {
         Properties propFile = getPropertyFile();
-        playwright = Playwright.create();
+        tlPlaywright.set(Playwright.create());
         String browserName = propFile.getProperty("Browser");
         System.out.println("browser name is :" + browserName);
 
         switch (browserName.toLowerCase()) {
             case "chromium":
-                browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                        .setHeadless(Boolean.parseBoolean(propFile.getProperty("Headless"))));
-                browserContext = browser.newContext();
-                page = browserContext.newPage();
+                tlBrowser.set(getPlaywright().chromium().launch(new BrowserType.LaunchOptions()
+                        .setHeadless(Boolean.parseBoolean(propFile.getProperty("Headless")))));
+                tlBrowserContext.set(getBrowser().newContext());
                 break;
             case "firefox":
-                browser = playwright.firefox().launch(new BrowserType.LaunchOptions()
-                        .setHeadless(Boolean.parseBoolean(propFile.getProperty("Headless"))));
-                browserContext = browser.newContext();
-                page = browserContext.newPage();
+                tlBrowser.set(getPlaywright().firefox().launch(new BrowserType.LaunchOptions()
+                        .setHeadless(Boolean.parseBoolean(propFile.getProperty("Headless")))));
+                tlBrowserContext.set(getBrowser().newContext());
                 break;
             case "safari":
-                browser = playwright.webkit().launch(new BrowserType.LaunchOptions()
-                        .setHeadless(Boolean.parseBoolean(propFile.getProperty("Headless"))));
-                browserContext = browser.newContext();
-                page = browserContext.newPage();
+                tlBrowser.set(getPlaywright().webkit().launch(new BrowserType.LaunchOptions()
+                        .setHeadless(Boolean.parseBoolean(propFile.getProperty("Headless")))));
+                tlBrowserContext.set(getBrowser().newContext());
                 break;
             case "chrome":
                 BrowserType.LaunchOptions lp = new BrowserType.LaunchOptions();
@@ -52,20 +61,19 @@ public class BrowserFactory {
                 List<String> ls = new ArrayList<String>();
                 ls.add("--start-maximized");  // only works with chromium based, rest browser have to use .setViewportSize
                 lp.setArgs(ls);
-                browser = playwright.chromium().launch(lp);
-                browserContext = browser.newContext(new Browser.NewContextOptions()
+                tlBrowser.set(getPlaywright().chromium().launch(lp));
+                tlBrowserContext.set(getBrowser().newContext((new Browser.NewContextOptions()
                         .setViewportSize(null)
                         .setRecordVideoDir(Paths.get("recording/"))
-                        .setRecordVideoSize(1024, 720));
-                page = browserContext.newPage();
+                        .setRecordVideoSize(1024, 720))));
                 break;
             default:
                 System.out.println("please pass a correct browser name......");
                 break;
         }
-        page.navigate(propFile.getProperty("URL"));
-        return page;
-
+        tlPage.set(getBrowserContext().newPage());
+        getPage().navigate(propFile.getProperty("URL"));
+        return getPage();
     }
 
     private Properties getPropertyFile() {
@@ -82,14 +90,6 @@ public class BrowserFactory {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public void closeBrowsercontext(){
-        browserContext.close();
-    }
-
-    public void closePage(){
-        page.close();
     }
 
     public void deleteDirectory() {

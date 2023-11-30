@@ -3,7 +3,7 @@ package Pages;
 import com.microsoft.playwright.Page;
 
 public class CheckoutInformationPage {
-    static Page page;
+    Page page;
     public CheckoutInformationPage(Page page){
         this.page = page;
     }

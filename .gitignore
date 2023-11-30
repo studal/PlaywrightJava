@@ -168,3 +168,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 *.webm
+*.class
+*.html
+*.class

@@ -4,7 +4,7 @@ import com.microsoft.playwright.Page;
 
 public class CheckoutCompletePage {
 
-    static Page page;
+    Page page;
     public CheckoutCompletePage(Page page){
         this.page = page;
     }
