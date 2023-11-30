@@ -172,3 +172,4 @@ fabric.properties
 *.html
 /test-output/
 src/.DS_Store
+target/.DS_Store
