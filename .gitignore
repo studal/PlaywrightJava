@@ -170,4 +170,4 @@ fabric.properties
 *.webm
 *.class
 *.html
-*.class
+/test-output/
