@@ -92,11 +92,21 @@ public class BrowserFactory {
         return null;
     }
 
-    public void deleteDirectory() {
+    public void emptyRecordingDirectory() {
         String directoryPath = System.getProperty("user.dir") + "/recording";
         File directory = new File(directoryPath);
         try {
             FileUtils.cleanDirectory(directory);
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void createRecordingDirectory() {
+        String directoryPath = System.getProperty("user.dir") + "/recording";
+        File directory = new File(directoryPath);
+        try {
+            FileUtils.createParentDirectories(directory);
         } catch (IOException ex){
             ex.printStackTrace();
         }

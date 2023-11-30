@@ -17,7 +17,9 @@ public class BaseClass {
 
     @BeforeSuite
     public void clearRecordings(){
-        browserFactory.deleteDirectory();
+        browserFactory.createRecordingDirectory();
+        browserFactory.emptyRecordingDirectory();
+
     }
 
 
