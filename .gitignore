@@ -151,3 +151,5 @@ examples.iml
 *.lst
 target/
 .DS_Store
+screenshot/placeholder
+recording/placeholder
