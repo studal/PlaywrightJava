@@ -8,6 +8,8 @@ test-output/
 .idea/
 
 # Recordings from Playwright #
+recording/
+screenshot/
 
 ####### Java #######
 # Compiled class file
