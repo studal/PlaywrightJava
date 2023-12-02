@@ -119,11 +119,7 @@ public class BrowserFactory {
         String ssDirectoryPath = System.getProperty("user.dir") + "/screenshot";
         File recDirectory = new File(recDirectoryPath);
         File ssDirectory = new File(ssDirectoryPath);
-        try {
-            FileUtils.createParentDirectories(recDirectory);
-            FileUtils.createParentDirectories(ssDirectory);
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
+        recDirectory.mkdir();
+        ssDirectory.mkdir();
     }
 }
