@@ -22,7 +22,7 @@ public class Checkout extends BaseClass {
         // Add Items to Cart
         pageManager.getProductsPage().addItemToCart("Sauce Labs Backpack");
         pageManager.getProductsPage().addItemToCart("Sauce Labs Bike Light");
-        Assert.assertEquals(pageManager.getProductsPage().getItemsAddedToCart(), "1",
+        Assert.assertEquals(pageManager.getProductsPage().getItemsAddedToCart(), "2",
                 "Some products may not have been added");
 
         // Proceed to scenarios.Checkout Item
