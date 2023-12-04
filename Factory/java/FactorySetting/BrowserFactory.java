@@ -37,7 +37,6 @@ public class BrowserFactory {
         Properties propFile = getPropertyFile();
         tlPlaywright.set(Playwright.create());
         String browserName = propFile.getProperty("Browser");
-        System.out.println("browser name is :" + browserName);
 
         switch (browserName.toLowerCase()) {
             case "chromium":
