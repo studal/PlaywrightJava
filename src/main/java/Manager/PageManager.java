@@ -5,7 +5,11 @@ import com.microsoft.playwright.Page;
 
 public class PageManager {
 
-    Page page ;
+    private Page page ;
+
+    public Page getPage(){
+        return page;
+    }
 
     public PageManager(Page page){
         this.page = page;
