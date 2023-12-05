@@ -3,7 +3,6 @@ package scenarios;
 import Base.BaseClass;
 import Manager.PageManager;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class Checkout extends BaseClass {

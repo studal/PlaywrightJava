@@ -60,6 +60,7 @@ public class BrowserFactory {
             case "chrome":
                 BrowserType.LaunchOptions lp = new BrowserType.LaunchOptions();
                 lp.setHeadless(Boolean.parseBoolean(propFile.getProperty("Headless")));
+                lp.setSlowMo(500);
                 lp.setChannel("chrome");
                 List<String> ls = new ArrayList<String>();
                 ls.add("--start-maximized");  // only works with chromium based, rest browser have to use .setViewportSize
