@@ -16,7 +16,7 @@ public class BaseClass{
 
      protected PageManager launchBrowserAndApp(){
          Page page = browserFactory.launchBrowser();
-         Log.info("Browser is launched successfully");
+         Log.info("Application is loaded");
          return new PageManager(page);
      }
 
@@ -31,6 +31,7 @@ public class BaseClass{
     @AfterMethod
     public void closeBrowser(){
         browserFactory.getBrowser().close();
+        Log.info("Browser is closed");
     }
 
 }

@@ -2,6 +2,8 @@ package FactorySetting;
 
 import org.apache.commons.io.FileUtils;
 import com.microsoft.playwright.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,6 +17,7 @@ import java.util.Properties;
 
 public class BrowserFactory {
 
+    public static Logger Log = LogManager.getLogger(BrowserFactory.class);
     private static ThreadLocal<Playwright> tlPlaywright = new ThreadLocal<>();
     private static ThreadLocal<Browser> tlBrowser = new ThreadLocal<>();
     private static ThreadLocal<BrowserContext> tlBrowserContext = new ThreadLocal<>();
@@ -72,15 +75,14 @@ public class BrowserFactory {
                 break;
         }
         tlPage.set(getBrowserContext().newPage());
+        Log.info("Browser is launched successfully");
         getPage().navigate(propFile.getProperty("URL"));
         return getPage();
     }
 
     private Properties getPropertyFile() {
         try {
-            String rootPath1 = Thread.currentThread().getContextClassLoader().getResource("").getPath();
             String rootPath = System.getProperty("user.dir") + "/src/main/resources/test.properties";
-
             Properties appProps = new Properties();
             appProps.load(new FileInputStream(rootPath));
             return appProps;

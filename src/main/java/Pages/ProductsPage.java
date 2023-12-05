@@ -1,8 +1,12 @@
 package Pages;
 
 import com.microsoft.playwright.Page;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ProductsPage {
+
+    public static Logger Log = LogManager.getLogger(ProductsPage.class);
 
     Page page;
     public ProductsPage(Page page){
@@ -17,11 +21,13 @@ public class ProductsPage {
 
 
     public String getPageTitle(){
+        Log.info("Page title is : "+page.textContent(pageTitleLocator));
         return page.textContent(pageTitleLocator);
     }
 
     public void addItemToCart(String itemName){
         page.click(String.format(itemToBeAddedToCartLocator, itemName));
+        Log.info(itemName+" added to cart");
     }
 
     public String getItemsAddedToCart(){
@@ -30,6 +36,7 @@ public class ProductsPage {
 
     public void goToCart(){
         page.click(topRightCartLocator);
+        Log.info("Clicked on Cart icon");
     }
 
 

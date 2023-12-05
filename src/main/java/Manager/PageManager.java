@@ -1,6 +1,5 @@
 package Manager;
 
-import FactorySetting.BrowserFactory;
 import Pages.*;
 import com.microsoft.playwright.Page;
 
