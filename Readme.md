@@ -10,4 +10,4 @@ docker run -d -p 4444:4444 --shm-size="2g" -e SE_NODE_GRID_URL="http://localhost
 # If extent report is not visible properly on Jenkins
 Go to Manage Jenkins -> Script Console and type into console the following commands:
 System.clearProperty("hudson.model.DirectoryBrowserSupport.CSP");
-System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-scripts; default-src 'self'; script-src * 'unsafe-eval'; img-src *; style-src * 'unsafe-inline'; font-src *");
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "sandbox allow-scripts; default-src 'self'; script-src * 'unsafe-eval'; img-src *; style-src * 'unsafe-inline'; font-src *"); 
