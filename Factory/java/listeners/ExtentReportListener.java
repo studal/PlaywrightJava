@@ -103,8 +103,7 @@ public class ExtentReportListener implements ITestListener {
 		try{
 			test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(),result.getMethod().getMethodName()).build());
 		} catch (Exception e){
-			e.printStackTrace();
-		}
+			e.printStackTrace();}
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
