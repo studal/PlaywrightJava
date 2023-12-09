@@ -15,6 +15,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.testng.TestException;
+
 import static FactorySetting.BrowserFactory.takeScreenshot;
 
 public class ExtentReportListener implements ITestListener {
@@ -98,7 +100,11 @@ public class ExtentReportListener implements ITestListener {
 
 	public synchronized void onTestFailure(ITestResult result) {
 		System.out.println((result.getMethod().getMethodName() + " failed!"));
-		test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(),result.getMethod().getMethodName()).build());
+		try{
+			test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(takeScreenshot(),result.getMethod().getMethodName()).build());
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
