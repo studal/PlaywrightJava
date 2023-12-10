@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class Checkout extends BaseClass {
 
     @Test
-    public void checkoutarticle() throws InterruptedException {
+    public void checkoutarticle() {
 
         PageManager pageManager = launchBrowserAndApp();
 
@@ -38,7 +38,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                 "Thank you for your order!", "Order Not Placed");
 
-        Thread.sleep(3000);
+        pageManager.getPage().waitForTimeout(3000);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                 "Thank you for your order!", "Order Not Placed");
 
-        Thread.sleep(3000);
+        pageManager.getPage().waitForTimeout(3000);
 
     }
 
@@ -105,7 +105,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                 "Thank you for your order!", "Order Not Placed");
 
-        Thread.sleep(3000);
+        pageManager.getPage().waitForTimeout(3000);
 
     }
 
@@ -139,7 +139,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                 "Thank you for your order!", "Order Not Placed");
 
-        Thread.sleep(3000);
+        pageManager.getPage().waitForTimeout(3000);
 
     }
 
@@ -173,7 +173,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                 "Thank you for your order!", "Order Not Placed");
 
-        Thread.sleep(3000);
+        pageManager.getPage().waitForTimeout(3000);
 
     }
 
@@ -207,7 +207,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                 "Thank you for your order!", "Order Not Placed");
 
-        Thread.sleep(3000);
+        pageManager.getPage().waitForTimeout(3000);
 
     }
 
@@ -241,7 +241,7 @@ public class Checkout extends BaseClass {
         Assert.assertEquals(pageManager.getCheckoutCompletePage().getCompleteOrderMessage(),
                 "Thank you for your order!", "Order Not Placed");
 
-        Thread.sleep(3000);
+        pageManager.getPage().waitForTimeout(3000);
 
     }
 
